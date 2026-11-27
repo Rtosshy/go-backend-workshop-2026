@@ -48,6 +48,7 @@ func (r *EnemyRepository) PeekVault() (bool, error) {
 	if err != nil {
 		return false, err
 	}
+	defer rows.Close()
 	if rows.Next() {
 		return true, nil // ← 扉（rows）を開けっぱなしのまま帰っている
 	}
